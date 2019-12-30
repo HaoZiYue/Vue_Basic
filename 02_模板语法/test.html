@@ -31,12 +31,34 @@
 
 <div id="app">
   <h2>1. 双大括号表达式</h2>
-
+  <input type="text" v-model="msg">
+  <p>{{msg}}</p>
   <h2>2. 指令一: 强制数据绑定</h2>
-
+  <a v-bind:href="url">go study</a>
+  <a :href="url2">去百度</a>
   <h2>3. 指令二: 绑定事件监听</h2>
+  <button v-on:click='test'>点击弹出窗口</button>
+  <button @click='test1'>弹窗</button>
 
 </div>
-
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+<script type="text/javascript">
+  new Vue({
+    el:"#app",
+    data:{
+      msg:'pipi',
+      url:'http://www.atguigu.com',
+      url2:'http://www.baidu.com'
+    },
+    methods:{
+      test (){
+        alert(1);
+      },
+      test1 (){
+        alert(2)
+      }
+    }
+  })
+</script>
 </body>
 </html>
