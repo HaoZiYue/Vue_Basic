@@ -5,10 +5,19 @@
   <title>17_插件</title>
 </head>
 <body>
-
+<div id="demo" v-my-directive='msg'></div>
 <script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="myPlugin.js"></script>
 <script type="text/javascript">
-
+  Vue.use(MyPlugin);
+  Vue.myGlobalMethod();
+  let vm = new Vue({
+    el:'#demo',
+    data:{
+      msg:'pipi,i love you'
+    }
+  })
+  vm.$myMethod();
 </script>
 </body>
 </html>

@@ -24,10 +24,44 @@
 -->
 
 <div>
-
+    <button @click='destroy'>destory vue</button>
+    <p v-show='isShow'>happy!</p>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
-<script type="text/javascript"></script>
+<script type="text/javascript">
+// Vue.config.productionTip = false;
+    let vm = new Vue({
+      // el:"div",
+      data:{
+        isShow:true
+      },
+      // beforeCreate(){
+      //   console.log('beforeCreate()调用了')
+      // },
+      // created(){
+      //   console.log('created()调用了');
+      // },
+      // beforeMount() {
+      //   console.log('beforeMount()调用了')
+      // },
+      mounted() {
+        setInterval(()=>{
+          this.isShow = !this.isShow;
+        },1000)
+      },
+      methods:{
+        destroy(){
+          this.$destroy();
+        }
+      },
+      beforeDestroy(){
+        console.log('beforeDestroy()调用了')
+      },
+      destroyed() {
+        console.log('destroyed()调用了')
+      },
+    }).$mount('div');
+</script>
 </body>
 </html>

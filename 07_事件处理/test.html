@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>07_事件处理</title>
+  <style>
+    .test4{
+      width: 200px;
+      height: 200px;
+      background: green;
+    }
+    .test5{
+      width: 100px;
+      height: 100px;
+      background: yellow;
+    }
+  </style>
 </head>
 <body>
 <!--
@@ -23,16 +35,57 @@
 <div id="example">
 
   <h2>1. 绑定监听</h2>
+  <button @click='test1'>点击弹出1</button>
+  <button @click="test2('atguigu')">点击显示</button>
+  <button @click="($event)=>{test3('abc',$event)}">点击显示2222</button>
 
   <h2>2. 事件修饰符</h2>
-
+  <div @click ='test4' class="test4">
+    <div @click.stop ='test5' class="test5"></div>
+  </div>
+  <a :href='url' @click.prevent='test6'>去百度</a>
+ 
   <h2>3. 按键修饰符</h2>
-
+  <input type="text" @keyup.enter='test7'>
+  <input type="text" @keyup.space='test8'>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
-
+new Vue({
+  el:'#example',
+  data(){
+    return {
+      url:'http://www.baidu.com'
+    }
+  },
+  methods:{
+    test1(){
+      alert(1)
+    },
+    test2(a){
+      alert(a)
+    },
+    test3(name,event){
+      alert(name + event.target.innerHTML)
+    },
+    test4(){
+      alert(4);
+    },
+    test5(){
+      alert(5)
+    },
+    test6(){
+      alert('点击了链接')
+    },
+    test7(event){
+      console.log(event.target.value);
+    },
+    test8(event){
+      console.log(event.target.value)
+    }
+  }
+})
 </script>
 </body>
 </html>
